@@ -2498,6 +2498,11 @@ cc_library_static {
 cc_defaults {
     name: "mesa3d-rpi-defaults",
     compile_multilib: "both",
+    arch: {
+        arm: {
+            cflags: ["-UHAVE_UINT128"],
+        },
+    },
     cflags: [
         "-DAMD_LLVM_AVAILABLE=0",
         "-DANDROID_STRICT",
