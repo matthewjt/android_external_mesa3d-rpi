@@ -24,6 +24,7 @@ apex {
     certificate: ":com.android.hardware.certificate",
     updatable: false,
     vendor: true,
+    compile_multilib: "both",
 
     native_shared_libs: [
         "libEGL_mesa",
