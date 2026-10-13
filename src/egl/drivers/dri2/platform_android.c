@@ -1261,7 +1261,7 @@ dri2_initialize_android(_EGLDisplay *disp)
 
 #if ANDROID_API_LEVEL >= 33
       /* align with BufferUsage::FRONT_BUFFER */
-      dri2_dpy->front_rendering_usage = 1UL << 32;
+      dri2_dpy->front_rendering_usage = 1ULL << 32;
       disp->Extensions.KHR_mutable_render_buffer = EGL_TRUE;
 #else
       /* For cros gralloc, if the front rendering query is supported, then all

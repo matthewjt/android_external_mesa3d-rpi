@@ -738,6 +738,11 @@ cc_library_static {
 
 cc_library_static {
     name: "mesa3d-rpi_src_gallium_drivers_vc4_libvc4_a",
+    arch: {
+        arm: {
+            cflags: ["-DV3D_BUILD_NEON"],
+        },
+    },
     srcs: [
         "src/gallium/drivers/vc4/*.c",
         "src/gallium/drivers/vc4/kernel/*.c",
