@@ -188,6 +188,12 @@ cc_library_static {
 
 cc_library_static {
     name: "mesa3d-rpi_src_util_libmesa_util_a",
+    arch: {
+        arm: {
+            exclude_srcs: ["src/util/cache_ops_aarch64.c"],
+            srcs: ["src/util/cache_ops_null.c"],
+        },
+    },
     srcs: [
         "meson_generated/src/util/format/u_format_table.c",
         "meson_generated/src/util/format_srgb.c",
