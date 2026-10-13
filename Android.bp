@@ -737,10 +737,49 @@ cc_library_static {
 }
 
 cc_library_static {
+    name: "mesa3d-rpi_src_gallium_drivers_vc4_neon_a",
+    srcs: [
+        "src/gallium/drivers/vc4/vc4_tiling_lt.c",
+    ],
+    cflags: [
+        "-DV3D_BUILD_NEON",
+        "-DXXH_FORCE_ALIGN_CHECK=0",
+        "-DXXH_FORCE_MEMORY_ACCESS=0",
+        "-pthread",
+    ],
+    local_include_dirs: [
+        "include",
+        "meson_generated/src",
+        "meson_generated/src/broadcom",
+        "meson_generated/src/broadcom/cle",
+        "meson_generated/src/compiler",
+        "meson_generated/src/compiler/nir",
+        "meson_generated/src/gallium/auxiliary",
+        "meson_generated/src/util",
+        "meson_generated/src/util/format",
+        "src",
+        "src/broadcom",
+        "src/broadcom/cle",
+        "src/compiler",
+        "src/compiler/nir",
+        "src/gallium/auxiliary",
+        "src/gallium/drivers",
+        "src/gallium/drivers/vc4",
+        "src/gallium/include",
+    ],
+    header_libs: ["libdrm_headers"],
+    defaults: ["mesa3d-rpi-defaults"],
+    arch: {
+        arm: { enabled: true },
+        arm64: { enabled: false },
+    },
+}
+
+cc_library_static {
     name: "mesa3d-rpi_src_gallium_drivers_vc4_libvc4_a",
     arch: {
         arm: {
-            cflags: ["-DV3D_BUILD_NEON"],
+            static_libs: ["mesa3d-rpi_src_gallium_drivers_vc4_neon_a"],
         },
     },
     srcs: [
