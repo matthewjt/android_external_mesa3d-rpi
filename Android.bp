@@ -61,6 +61,11 @@ cc_library_shared {
 
 cc_library_shared {
     name: "libgallium_dri",
+    arch: {
+        arm: {
+            static_libs: ["mesa3d-rpi_src_gallium_drivers_vc4_neon_a"],
+        },
+    },
     srcs: ["src/gallium/targets/dri/dri_target.c"],
     cflags: [
         "-DGALLIUM_KMSRO",
