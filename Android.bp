@@ -769,10 +769,6 @@ cc_library_static {
     ],
     header_libs: ["libdrm_headers"],
     defaults: ["mesa3d-rpi-defaults"],
-    arch: {
-        arm: { enabled: true },
-        arm64: { enabled: false },
-    },
 }
 
 cc_library_static {
