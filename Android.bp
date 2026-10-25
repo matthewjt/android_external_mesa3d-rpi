@@ -1799,6 +1799,13 @@ cc_library_shared {
         "src/gbm/main/gbm.c",
     ],
     cflags: ["-DDEFAULT_BACKENDS_PATH=\"/apex/com.android.hardware.graphics.allocator.minigbm_gbm_mesa/lib64\""],
+    // 32-bit variant (32-bit gralloc-mapper chain) must dlopen the ARM dri_gbm backend
+    // from the apex's lib/, not the hardcoded lib64 path.
+    arch: {
+        arm: {
+            cflags: ["-DDEFAULT_BACKENDS_PATH=\"/apex/com.android.hardware.graphics.allocator.minigbm_gbm_mesa/lib\""],
+        },
+    },
     shared_libs: [
         "libcutils",
         "libdrm",
